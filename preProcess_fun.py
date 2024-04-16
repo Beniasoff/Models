@@ -4,11 +4,11 @@ import os
 
 
 # %%
-def preProcess(directory_path):
+def preProcess(directory_path, files_number=3):
 # path = r"C:\Users\netam_8hw3bpl\OneDrive\Documents\Uni\models\finals\dryad"
 
     directories = [r'Crawling\N2_adult',r'Crawling\N2_LateL1', r'Swimming\N2_adult', r'Swimming\N2_LateL1']
-    fileNum = 3
+    fileNum = files_number
 
     all_data = pd.DataFrame()
 
@@ -33,8 +33,5 @@ def preProcess(directory_path):
 
     return all_data
 
-
-# %%
-all_data.head()
 
 
