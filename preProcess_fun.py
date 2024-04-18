@@ -7,7 +7,7 @@ import os
 def preProcess(directory_path, files_number=3):
 # path = r"C:\Users\netam_8hw3bpl\OneDrive\Documents\Uni\models\finals\dryad"
 
-    directories = [r'Crawling\N2_adult',r'Crawling\N2_LateL1', r'Swimming\N2_adult', r'Swimming\N2_LateL1']
+    directories = [r'Crawling\N2_adult',r'Crawling\N2_lateL1', r'Swimming\N2_adult', r'Swimming\N2_lateL1']
     fileNum = files_number
 
     all_data = pd.DataFrame()
@@ -18,16 +18,16 @@ def preProcess(directory_path, files_number=3):
         
         for file in files[0:fileNum]:
             data = pd.read_csv(the_path + "\\" + file, sep="\t")
-            df = data.iloc[:,1:11]
+            df = data.iloc[:,1:11].copy()
             if 'crawl' in file.lower() :
-                df['movement'] = 'crawl'
+                df.loc[:,'movement'] = 'crawl'
             elif 'swim' in file.lower():
-                df['movement'] = 'swim'
+                df.loc[:,'movement'] = 'swim'
 
             if 'adult' in file.lower():
-                df['age'] = 'adult'
+                df.loc[:,'age'] = 'adult'
             elif 'l1' in file.lower():
-                df['age'] = 'young'
+                df.loc[:,'age'] = 'young'
             
             all_data = pd.concat([all_data, df], ignore_index=True)
 
