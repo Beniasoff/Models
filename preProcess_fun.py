@@ -1,13 +1,16 @@
 # %%
 import pandas as pd
 import os
+import matplotlib.pyplot as plt
 
 
 # %%
-def preProcess(directory_path, files_number=3):
+def preProcess(directory_path, files_number=3,All = True):
 # path = r"C:\Users\netam_8hw3bpl\OneDrive\Documents\Uni\models\finals\dryad"
-
-    directories = [r'Crawling\N2_adult',r'Crawling\N2_lateL1', r'Swimming\N2_adult', r'Swimming\N2_lateL1']
+    if All:
+        directories = [r'Crawling\N2_adult',r'Crawling\N2_lateL1', r'Swimming\N2_adult', r'Swimming\N2_lateL1']
+    else:
+        directories = [r'Crawling\N2_adult',r'Swimming\N2_adult']
     fileNum = files_number
 
     all_data = pd.DataFrame()
@@ -32,6 +35,5 @@ def preProcess(directory_path, files_number=3):
             all_data = pd.concat([all_data, df], ignore_index=True)
 
     return all_data
-
 
 
